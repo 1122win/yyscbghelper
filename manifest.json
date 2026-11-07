@@ -1,0 +1,61 @@
+{
+  "manifest_version": 3,
+  "name": "yyscbghelper",
+  "version": "1.0.1",
+  "description": "阴阳师藏宝阁深度评估工具（极速版）：一速与多套独立拆分、速生生/速生暴方案工作台、御魂胚子统计、雪御前/平将门等PVE/PVP输出面板计算、资源全景与多账号对比导出",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://yys.cbg.163.com/*"
+      ],
+      "js": [
+        "content/content-bridge.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://yys.cbg.163.com/*"
+      ],
+      "js": [
+        "config/color-config.js",
+        "config/frame-config.js",
+        "content/content.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    }
+  ],
+  "permissions": [
+    "storage",
+    "scripting",
+    "activeTab",
+    "downloads"
+  ],
+  "host_permissions": [
+    "https://yys.cbg.163.com/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "updates/changelog.txt"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}

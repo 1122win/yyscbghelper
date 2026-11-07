@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yyscbghelper</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-top">
+                <h1>⚡ yyscbghelper</h1>
+                <span class="version" id="versionDisplay">v1.0.1</span>
+            </div>
+            <p class="subtitle">一速独立拆分 · 速生生工作台 · 胚子评估 · 雪御前/平将门面板</p>
+            <div id="pageStatus" class="status-badge">正在检测当前标签页...</div>
+        </div>
+
+        <div class="content">
+            <!-- 新增：当前账号实时御魂与面板速览 + 一键在网页打开对应模块 -->
+            <div class="section compact" style="border: 1.5px solid #c7d2fe; background: linear-gradient(180deg, #fafaff 0%, #ffffff 100%);">
+                <h2>🔍 当前账号御魂与面板速览 (点击直达网页看板)</h2>
+                <div id="liveSummaryBox" style="font-size: 11px; color: #475569; background: #f1f5f9; padding: 7px 9px; border-radius: 6px; margin-bottom: 8px; line-height: 1.6;">
+                    正在读取当前网页的御魂分析数据...（若刚安装插件，请按 F5 刷新藏宝阁网页或点击下方按钮自动加载）
+                </div>
+                <div class="button-grid">
+                    <button id="jumpSpeedTab" class="action-btn indigo">
+                        <span>⚡ 1. 一速与速生生配装</span>
+                    </button>
+                    <button id="jumpOutputTab" class="action-btn gold">
+                        <span>⚔️ 2. 雪御前/平将门面板</span>
+                    </button>
+                    <button id="jumpEmbryoTab" class="action-btn primary">
+                        <span>💎 3. 御魂胚子与定义</span>
+                    </button>
+                    <button id="jumpResourceTab" class="action-btn emerald">
+                        <span>🏮 4. 账号资源与外观</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 快捷数据与对比中心 -->
+            <div class="section compact">
+                <h2>📊 缓存导出与多账号对比</h2>
+                <div class="button-grid">
+                    <button id="addCompareBtn" class="action-btn gold">
+                        <span>➕ 加入对比篮</span>
+                    </button>
+                    <button id="openCompareBtn" class="action-btn emerald">
+                        <span>📊 打开账号对比</span>
+                    </button>
+                    <button id="exportYuhunBtn" class="action-btn indigo">
+                        <span>💾 导出御魂JSON</span>
+                    </button>
+                    <button id="exportRawJson" class="action-btn primary">
+                        <span>📦 导出原始JSON</span>
+                    </button>
+                    <button id="viewCacheInfo" class="action-btn secondary">
+                        <span>ℹ️ 查看缓存详情</span>
+                    </button>
+                    <button id="openColorSettings" class="action-btn secondary">
+                        <span>⚙️ 自定义色阶</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 配色方案 -->
+            <div class="section compact">
+                <h2>🎨 速度档位预设主题</h2>
+                <div class="scheme-grid-compact">
+                    <div class="scheme-card-compact" data-scheme="default" title="高对比度现代警示色阶">
+                        <div class="scheme-preview-compact">
+                            <span style="background: #DC2626"></span>
+                            <span style="background: #EA580C"></span>
+                            <span style="background: #D97706"></span>
+                            <span style="background: #2563EB"></span>
+                            <span style="background: #64748B"></span>
+                        </div>
+                        <div class="scheme-name-compact">默认</div>
+                    </div>
+
+                    <div class="scheme-card-compact" data-scheme="scheme1" title="从热烈的红色过渡到温和的橙色">
+                        <div class="scheme-preview-compact">
+                            <span style="background: #D32F2F"></span>
+                            <span style="background: #F44336"></span>
+                            <span style="background: #FF6F00"></span>
+                            <span style="background: #FFA726"></span>
+                            <span style="background: #78909C"></span>
+                        </div>
+                        <div class="scheme-name-compact">经典</div>
+                    </div>
+
+                    <div class="scheme-card-compact" data-scheme="scheme2" title="从神秘的紫色过渡到清新的蓝色">
+                        <div class="scheme-preview-compact">
+                            <span style="background: #6A1B9A"></span>
+                            <span style="background: #8E24AA"></span>
+                            <span style="background: #5E35B1"></span>
+                            <span style="background: #1E88E5"></span>
+                            <span style="background: #78909C"></span>
+                        </div>
+                        <div class="scheme-name-compact">冷色</div>
+                    </div>
+
+                    <div class="scheme-card-compact" data-scheme="scheme3" title="从激情的玫红过渡到温暖的橙色">
+                        <div class="scheme-preview-compact">
+                            <span style="background: #C2185B"></span>
+                            <span style="background: #E91E63"></span>
+                            <span style="background: #F06292"></span>
+                            <span style="background: #FF6F00"></span>
+                            <span style="background: #78909C"></span>
+                        </div>
+                        <div class="scheme-name-compact">暖色</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 版本与更新 -->
+            <div class="section compact">
+                <div class="footer-actions">
+                    <button id="viewChangelog" class="footer-btn">📖 版本更新日志</button>
+                    <button id="checkUpdate" class="footer-btn">🔍 检查更新</button>
+                </div>
+                <div id="updateStatus" class="update-status" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 更新日志模态框 -->
+    <div id="changelogModal" class="changelog-modal" style="display: none;">
+        <div class="changelog-modal-content">
+            <div class="changelog-modal-header">
+                <h3>📖 更新日志</h3>
+                <button id="changelogModalClose" class="changelog-modal-close">×</button>
+            </div>
+            <div id="changelogContent" class="changelog-modal-body"></div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
